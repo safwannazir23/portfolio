@@ -52,7 +52,7 @@ const Projects = () => {
   }, { scope: container });
 
   return (
-    <section ref={container} className="py-24 px-8 bg-black relative">
+    <section ref={container} className="py-24 px-8 relative">
        {/* Decorative grid for projects section */}
        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] z-0 opacity-10 pointer-events-none"
            style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
