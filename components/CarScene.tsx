@@ -19,18 +19,15 @@ useGLTF.preload("/model/f1.glb");
 const CarModel = ({ params }: { params: any }) => {
   const { scene } = useGLTF("/model/f1.glb");
   const modelRef = useRef<THREE.Group>(null);
-  const vibrationRef = useRef<gsap.core.Tween | null>(null);
+  const vibrationRef = useRef<THREE.Group>(null);
 
   useGSAP(() => {
     if (!modelRef.current) return;
 
-    // Power Refresh: Some Next.js layouts need a moment to settle
+    // Power Refresh to ensure correct scroll height
     const scrollTask = setTimeout(() => {
       ScrollTrigger.refresh();
     }, 1000);
-
-    // Synchronize initial state
-    gsap.set(modelRef.current.position, { y: params.startY, x: 0 });
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -39,12 +36,12 @@ const CarModel = ({ params }: { params: any }) => {
         end: "bottom bottom",
         scrub: params.scrub,
         invalidateOnRefresh: true,
-        immediateRender: false,
       },
     });
 
-    // Ensure we start at startY
-    tl.set(modelRef.current.position, { y: params.startY }, 0);
+    // We define the starting position directly in the first frame of the timeline
+    // This prevents "jumps" during refreshes
+    tl.set(modelRef.current.position, { y: params.startY, x: 0 }, 0);
 
     const totalSections = params.sections || 7;
 
@@ -53,7 +50,7 @@ const CarModel = ({ params }: { params: any }) => {
 
       tl.to(modelRef.current.position, {
         y: nextY,
-        ease: "power3.out",
+        ease: "power2.inOut",
         duration: params.moveDuration
       });
 
@@ -63,27 +60,31 @@ const CarModel = ({ params }: { params: any }) => {
       });
     }
 
-    // Engine vibration animation
-    if (vibrationRef.current) vibrationRef.current.kill();
-    vibrationRef.current = gsap.to(modelRef.current.position, {
-      y: `+=${params.vibration}`,
-      repeat: -1,
-      yoyo: true,
-      duration: 0.1,
-      ease: "none"
-    });
+    // Vibration on the INNER group so it doesn't fight with the scroll position
+    if (vibrationRef.current) {
+      gsap.killTweensOf(vibrationRef.current.position);
+      gsap.to(vibrationRef.current.position, {
+        y: `+=${params.vibration}`,
+        repeat: -1,
+        yoyo: true,
+        duration: 0.1,
+        ease: "none"
+      });
+    }
 
     return () => {
       clearTimeout(scrollTask);
       tl.kill();
-      if (vibrationRef.current) vibrationRef.current.kill();
     };
 
   }, { dependencies: [scene, params] });
 
   return (
-    <group ref={modelRef} scale={params.scale} position={[0, params.startY, 0]} rotation={[Math.PI / 2.5, 0, 0]}>
-      <primitive object={scene} />
+    <group ref={modelRef} scale={params.scale} rotation={[Math.PI / 2.5, 0, 0]}>
+      {/* Vibration happens on this inner group */}
+      <group ref={vibrationRef}>
+        <primitive object={scene} />
+      </group>
     </group>
   );
 };
@@ -94,8 +95,8 @@ const CarScene = () => {
     scrub: 1.9,
     startY: 6,
     endY: -6.5,
-    sections: 5,
-    moveDuration: 1.6,
+    sections: 7,
+    moveDuration: 1,
     pauseDuration: 0.6,
     vibration: 0.01,
     ambientIntensity: 0.8,
@@ -115,7 +116,6 @@ const CarScene = () => {
 
   return (
     <>
-      {/* Expanded Tweak Panel */}
       <div className={`fixed top-4 right-4 z-[9999] bg-zinc-900/95 border border-white/10 p-6 rounded-2xl backdrop-blur-2xl w-80 transition-all duration-500 shadow-2xl max-h-[90vh] overflow-y-auto ${isOpen ? 'translate-x-0 opacity-100' : 'translate-x-[calc(100%+16px)] opacity-0'} pointer-events-auto custom-scrollbar`}>
         <button
           onClick={() => setIsOpen(false)}
