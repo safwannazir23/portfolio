@@ -10,15 +10,19 @@ if (typeof window !== "undefined") {
 }
 
 const certificatesData = [
-  { name: "Certified Cloud Practitioner", year: "2019", provider: "Compja" },
-  { name: "IBM Coding", year: "2018", provider: "IBM" },
-  { name: "Coding for Dashboards", year: "2018", provider: "Quantec" },
+  { name: "Software Architecture Foundations", year: "2025", provider: "LinkedIn Learning" },
+  { name: "Infosys Foundation’s Certificate Course on Artificial Intelligence", year: "2025", provider: "Infosys" },
+  { name: "Harvard University’s  CS50", year: "2024", provider: "edX" },
+  { name: "Web Development Bootcamp", year: "2024", provider: "Udemy" },
+  { name: "Al Fluency Framework & Foundations", year: "2026", provider: "Anthropic" },
+  { name: "Claude 101", year: "2026", provider: "Anthropic" },
+  { name: "Claude Code in Action", year: "2026", provider: "Anthropic" },
 ];
 
 const Certificates = () => {
   const container = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
-  const itemRefs = useRef<(HTMLDivElement|null)[]>([]);
+  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useGSAP(() => {
     gsap.from(titleRef.current, {

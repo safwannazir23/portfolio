@@ -12,26 +12,26 @@ if (typeof window !== "undefined") {
 
 const educationData = [
   {
-    degree: "MSc in Computer Science",
+    degree: "Bachelor of Technology in Computer Science and Engineering",
     tag: "Highest",
-    duration: "2016 - 2017",
-    institution: "UvA",
-    location: "Amsterdam",
-    description: "In my thesis I developed a method for data transfer between different operating systems.",
+    duration: "2021 - 2025",
+    institution: "IUST",
+    location: "Awantipora, J&K",
+    description: "DSA, OOPS, OS, DBMS, Software Engineering, Computer Networks, Cryptography, C/C++/Java Programming, Computer Architecture and Organisation, Microprocessors, AI, ML, NLP, FLAT, Compiler Design, Linux Internals, Discrete Mathematics, HPC, IoT, Digital Image Processing, and Organisational Behaviour. ",
   },
   {
-    degree: "BSc in Computer Science",
-    duration: "2013 - 2016",
-    institution: "UvA",
-    location: "Amsterdam",
-    description: "The Bachelor told me everything about the fundamentals of computer science.",
+    degree: "Higher Secondary School",
+    duration: "2007 - 2019",
+    institution: "Burn Hall",
+    location: "Srinagar",
+    description: "Completed my Higher Secondary School with a focus on Science stream, gaining a strong foundation in Physics, Chemistry, and Mathematics.",
   },
 ];
 
 const Education = () => {
   const container = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
-  const itemRefs = useRef<(HTMLDivElement|null)[]>([]);
+  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useGSAP(() => {
     gsap.from(titleRef.current, {

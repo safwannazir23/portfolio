@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Calendar, Briefcase, MapPin } from "lucide-react";
+import { storage } from "three/webgpu";
 
 // Register ScrollTrigger
 if (typeof window !== "undefined") {
@@ -13,26 +14,34 @@ if (typeof window !== "undefined") {
 
 const workData = [
   {
-    role: "Full-Stack Developer",
+    role: "Software Developer Intern",
     status: "Current",
-    duration: "2022 - Now",
-    company: "Lumina Tech",
-    location: "Berlin",
-    description: "At Lumina Tech I strengthened my foundation in algorithms, data structures, and software engineering.",
+    duration: "JAN 2025 - Now",
+    company: "EnableNow Technology Solutions",
+    location: "Srinagar",
+    description: "At EnableNow Technology Solutions I strengthened my frontend developent skills. Collaborated with the team to develop and maintain web applications using Next.js, GSAP, Tailwind CSS",
   },
   {
-    role: "Junior Developer",
-    duration: "2017 - 2019",
-    company: "Toijuh",
-    location: "Tokyo",
-    description: "Supported front- and back-end development on client projects and internal tools, gaining hands-on coding experience in real-world environments.",
+    role: "Software Developer Intern",
+    duration: "AUG 2025 - JAN 2025",
+    company: "Flattr",
+    location: "Srinagar",
+    description: "Built and maintained 20+ APIs of the system - used Node.js, and Express.js to develop the backend API, and MongoDB for data storage.  Refactored front-end code by optimizing API routes for efficient data fetching, improving output formatting, enhancing data handling to streamline development, and feature testing"
   },
   {
-    role: "Internship",
-    duration: "2016 - 2017",
-    company: "Cloudel",
-    location: "Berlin",
-    description: "Assisted in developing cloud-based features and automation tools while learning agile workflows and dev best practices.",
+    role: "Full-Stack Engineer Intern",
+    duration: "FEB 2024 - AUG 2024",
+    company: "WazirOne",
+    location: "Srinagar",
+    description: "• Collaborated with a team of 4 developers to design, develop, and deploy web applications in an agile environment tailored to client requirements. • Built and maintained front-end and back-end components of the system - used React.js as a front-end library, Shad/cn and Tailwind CSS for UI, Node.js, and Express.js to develop the backend API, MongoDB and AWS S3 for storage, and Vercel automatic CI and CD.",
+  }
+  ,
+  {
+    role: "Frontend Engineer Intern",
+    duration: "NOV 2023 - JAN 2024",
+    company: "Eonify Tech",
+    location: "Srinagar",
+    description: " Collaborated with a team of 3 developers to design and develop a web-based LMS application. • Developed a responsive and dynamic front-end for an LMS-based application using React.js library and Bootstrap for styling components, and integrated WebSocket for real-time chat functionality.",
   },
 ];
 
@@ -58,7 +67,7 @@ const Work = () => {
     // Items animation
     itemRefs.current.forEach((item, index) => {
       if (!item) return;
-      
+
       gsap.from(item, {
         scrollTrigger: {
           trigger: item,
@@ -79,7 +88,7 @@ const Work = () => {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32">
         {/* Left: Title */}
         <div className="flex justify-start md:justify-end">
-          <h2 
+          <h2
             ref={titleRef}
             className="text-5xl md:text-7xl font-bold tracking-tighter text-black h-fit"
           >
@@ -90,7 +99,7 @@ const Work = () => {
         {/* Right: Work Items */}
         <div className="flex flex-col gap-12">
           {workData.map((item, index) => (
-            <div 
+            <div
               key={item.role + index}
               ref={(el) => { itemRefs.current[index] = el; }}
               className="pb-12 border-b border-black/5 last:border-none"
