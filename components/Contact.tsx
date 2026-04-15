@@ -40,7 +40,7 @@ const Contact = () => {
     <section ref={container} className="py-24 px-8">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32">
         <div className="flex justify-start md:justify-end">
-          <h2 ref={titleRef} className="text-5xl md:text-7xl font-bold tracking-tighter text-white">Contact</h2>
+          <h2 ref={titleRef} className="text-5xl md:text-7xl font-bold tracking-tighter text-black">Contact</h2>
         </div>
         <div className="flex flex-col gap-6">
           {contactLinks.map((link, index) => (
@@ -48,7 +48,7 @@ const Contact = () => {
               key={link.name}
               href={link.href}
               ref={el => { linkRefs.current[index] = el; }}
-              className="group flex items-center gap-3 text-2xl md:text-3xl font-bold text-zinc-500 hover:text-white transition-colors duration-500 w-fit"
+              className="group flex items-center gap-3 text-2xl md:text-3xl font-bold text-zinc-600 hover:text-black transition-colors duration-500 w-fit"
             >
               <span>{link.name}</span>
               <ArrowUpRight className="w-6 h-6 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />

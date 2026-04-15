@@ -55,29 +55,29 @@ const Projects = () => {
     <section ref={container} className="py-24 px-8 relative">
        {/* Decorative grid for projects section */}
        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] z-0 opacity-10 pointer-events-none"
-           style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+           style={{ backgroundImage: 'linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32 relative z-10">
         <div className="flex justify-start md:justify-end">
-          <h2 ref={titleRef} className="text-5xl md:text-7xl font-bold tracking-tighter text-white">Projects</h2>
+          <h2 ref={titleRef} className="text-5xl md:text-7xl font-bold tracking-tighter text-black">Projects</h2>
         </div>
         <div className="flex flex-col gap-6 w-full max-w-md">
           {projectsData.map((project, index) => (
             <div 
               key={project.title} 
               ref={el => { cardRefs.current[index] = el; }}
-              className="group flex items-center gap-6 p-6 rounded-2xl bg-zinc-900/50 border border-white/5 hover:bg-zinc-800/80 hover:border-white/10 transition-all duration-500 cursor-pointer shadow-xl backdrop-blur-sm"
+              className="group flex items-center gap-6 p-6 rounded-2xl bg-white/80 border border-black/5 hover:bg-white hover:border-black/20 transition-all duration-500 cursor-pointer shadow-lg backdrop-blur-sm"
             >
-              <div className={`p-4 rounded-xl bg-black border border-white/5 group-hover:scale-110 transition-transform duration-500 ${project.color}`}>
+              <div className={`p-4 rounded-xl bg-zinc-50 border border-black/5 group-hover:scale-110 transition-transform duration-500 shadow-sm ${project.color}`}>
                 <project.icon className="w-8 h-8" />
               </div>
               <div className="flex flex-col">
-                <h3 className="text-xl font-bold text-white mb-1 tracking-tight">{project.title}</h3>
-                <p className="text-zinc-500 font-medium text-sm">{project.description}</p>
+                <h3 className="text-xl font-bold text-black mb-1 tracking-tight">{project.title}</h3>
+                <p className="text-zinc-600 font-medium text-sm">{project.description}</p>
               </div>
             </div>
           ))}
-          <button className="mt-4 text-zinc-500 font-bold uppercase tracking-widest text-xs hover:text-white transition-colors duration-300 w-fit">
+          <button className="mt-4 text-zinc-600 font-bold uppercase tracking-widest text-xs hover:text-black transition-colors duration-300 w-fit">
             Load More
           </button>
         </div>

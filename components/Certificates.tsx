@@ -39,13 +39,13 @@ const Certificates = () => {
     <section ref={container} className="py-24 px-8">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32">
         <div className="flex justify-start md:justify-end">
-          <h2 ref={titleRef} className="text-5xl md:text-7xl font-bold tracking-tighter text-white">Certificates</h2>
+          <h2 ref={titleRef} className="text-5xl md:text-7xl font-bold tracking-tighter text-black">Certificates</h2>
         </div>
         <div className="flex flex-col gap-10">
           {certificatesData.map((cert, index) => (
-            <div key={index} ref={el => { itemRefs.current[index] = el; }} className="pb-6 border-b border-white/5 last:border-none">
-              <h3 className="text-xl font-bold text-white mb-2">{cert.name}</h3>
-              <p className="text-zinc-500 font-medium">{cert.year} at {cert.provider}</p>
+            <div key={index} ref={el => { itemRefs.current[index] = el; }} className="pb-6 border-b border-black/5 last:border-none">
+              <h3 className="text-xl font-bold text-black mb-2">{cert.name}</h3>
+              <p className="text-zinc-600 font-medium">{cert.year} at {cert.provider}</p>
             </div>
           ))}
         </div>

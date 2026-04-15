@@ -81,7 +81,7 @@ const Work = () => {
         <div className="flex justify-start md:justify-end">
           <h2 
             ref={titleRef}
-            className="text-5xl md:text-7xl font-bold tracking-tighter text-white h-fit"
+            className="text-5xl md:text-7xl font-bold tracking-tighter text-black h-fit"
           >
             Work
           </h2>
@@ -93,14 +93,14 @@ const Work = () => {
             <div 
               key={item.role + index}
               ref={(el) => { itemRefs.current[index] = el; }}
-              className="pb-12 border-b border-white/5 last:border-none"
+              className="pb-12 border-b border-black/5 last:border-none"
             >
               <div className="flex flex-col gap-4">
                 {/* Role and Status */}
                 <div className="flex items-center gap-3">
-                  <h3 className="text-2xl font-bold text-white">{item.role}</h3>
+                  <h3 className="text-2xl font-bold text-black">{item.role}</h3>
                   {item.status && (
-                    <span className="px-3 py-0.5 rounded-full bg-orange-950/30 text-orange-500 text-xs font-bold uppercase tracking-wider border border-orange-500/20">
+                    <span className="px-3 py-0.5 rounded-full bg-orange-100 text-orange-700 text-xs font-bold uppercase tracking-wider border border-orange-200">
                       {item.status}
                     </span>
                   )}
@@ -123,7 +123,7 @@ const Work = () => {
                 </div>
 
                 {/* Description */}
-                <p className="text-lg text-zinc-400 leading-relaxed max-w-xl">
+                <p className="text-lg text-zinc-600 leading-relaxed max-w-xl">
                   {item.description}
                 </p>
               </div>
