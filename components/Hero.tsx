@@ -68,9 +68,6 @@ const Hero = () => {
     Observer.create({
       onChangeY(self) {
         let factor = 2.5;
-        if (self.deltaY < 0) {
-          factor *= -1;
-        }
         gsap
           .timeline({
             defaults: {
@@ -78,7 +75,7 @@ const Hero = () => {
             },
           })
           .to(loop, { timeScale: factor * 2.5, duration: 0.2, overwrite: true })
-          .to(loop, { timeScale: factor / 2.5, duration: 1 }, "+=0.3");
+          .to(loop, { timeScale: 1, duration: 1 }, "+=0.3");
       },
     });
   }, { scope: container });
@@ -110,7 +107,7 @@ const Hero = () => {
 
           {/* GSAP Marquee */}
           <div className="absolute top-[45vh] left-0 w-full overflow-hidden whitespace-nowrap pointer-events-none z-0">
-            <div className="marquee-inner flex whitespace-nowrap text-[18vw] font-black uppercase leading-none text-red-300 select-none">
+            <div className="marquee-inner flex whitespace-nowrap text-[18vw] font-black uppercase leading-none text-red-500 select-none">
               <span className="marquee-item mr-20">HELLO WORLD</span>
               <span className="marquee-item mr-20">HELLO WORLD</span>
               <span className="marquee-item mr-20">HELLO WORLD</span>
@@ -156,11 +153,11 @@ function horizontalLoop(items: any[], config: any) {
   items = gsap.utils.toArray(items);
   config = config || {};
   let tl = gsap.timeline({
-      repeat: config.repeat,
-      paused: config.paused,
-      defaults: { ease: "none" },
-      onReverseComplete: () => tl.totalTime(tl.rawTime() + tl.duration() * 100),
-    }),
+    repeat: config.repeat,
+    paused: config.paused,
+    defaults: { ease: "none" },
+    onReverseComplete: () => tl.totalTime(tl.rawTime() + tl.duration() * 100),
+  }),
     length = items.length,
     startX = items[0].offsetLeft,
     times: any[] = [],

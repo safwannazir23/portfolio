@@ -91,7 +91,7 @@ const CarModel = ({ params }: { params: any }) => {
 
 const CarScene = () => {
   const [params, setParams] = useState({
-    scale: 0.6,
+    scale: 0.5,
     scrub: 1.9,
     startY: 6,
     endY: -6.5,
