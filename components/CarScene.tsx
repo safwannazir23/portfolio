@@ -40,7 +40,6 @@ const CarModel = ({ params }: { params: any }) => {
     });
 
     // We define the starting position directly in the first frame of the timeline
-    // This prevents "jumps" during refreshes
     tl.set(modelRef.current.position, { y: params.startY, x: 0 }, 0);
 
     const totalSections = params.sections || 7;
@@ -80,7 +79,7 @@ const CarModel = ({ params }: { params: any }) => {
   }, { dependencies: [scene, params] });
 
   return (
-    <group ref={modelRef} scale={params.scale} rotation={[Math.PI / 2.5, 0, 0]}>
+    <group ref={modelRef} scale={params.scale} rotation={[Math.PI / 2.5, 0, 0]} position={[0, params.startY, 0]}>
       {/* Vibration happens on this inner group */}
       <group ref={vibrationRef}>
         <primitive object={scene} />
