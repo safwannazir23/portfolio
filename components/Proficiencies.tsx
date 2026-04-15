@@ -51,7 +51,7 @@ const Proficiencies = () => {
     // Sections animation
     sectionRefs.current.forEach((section, index) => {
       if (!section) return;
-      
+
       gsap.from(section, {
         scrollTrigger: {
           trigger: section,
@@ -72,9 +72,9 @@ const Proficiencies = () => {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32">
         {/* Left: Title */}
         <div className="flex justify-start md:justify-end">
-          <h2 
+          <h2
             ref={titleRef}
-            className="text-5xl md:text-7xl font-bold tracking-tighter text-black"
+            className="text-5xl md:text-7xl font-bold tracking-tighter text-red-500"
           >
             Proficiencies
           </h2>
@@ -83,7 +83,7 @@ const Proficiencies = () => {
         {/* Right: Content */}
         <div className="flex flex-col gap-12">
           {proficienciesData.map((group, index) => (
-            <div 
+            <div
               key={group.category}
               ref={(el) => { sectionRefs.current[index] = el; }}
               className="group"

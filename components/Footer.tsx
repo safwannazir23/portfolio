@@ -119,12 +119,35 @@ const Footer = () => {
           Ready to start the next project?
         </p>
 
-        <button className="px-12 py-4 bg-red-600 text-white font-black uppercase tracking-[0.2em] rounded-none hover:scale-105 transition-transform duration-300 shadow-xl mb-16">
+        <a
+          href="mailto:sawfan.nazir@enablenow.com"
+          onMouseEnter={(e) => {
+            gsap.to(e.currentTarget, {
+              scale: 1.1,
+              backgroundColor: "#b91c1c",
+              boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.2)",
+              duration: 0.3
+            });
+          }}
+          onMouseLeave={(e) => {
+            gsap.to(e.currentTarget, {
+              scale: 1,
+              backgroundColor: "#dc2626",
+              boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1)",
+              duration: 0.3
+            });
+          }}
+          className="px-12 py-4 bg-red-600 text-white font-black uppercase tracking-[0.2em] rounded-none shadow-xl mb-16 inline-block"
+        >
           Get In Touch
-        </button>
+        </a>
 
         <div className="mx-auto">
-          <p className="text-sm font-bold text-zinc-600 uppercase tracking-[0.2em]">
+          <p
+            onMouseEnter={(e) => gsap.to(e.currentTarget, { letterSpacing: "0.3em", color: "#000", duration: 0.5 })}
+            onMouseLeave={(e) => gsap.to(e.currentTarget, { letterSpacing: "0.2em", color: "#52525b", duration: 0.5 })}
+            className="text-sm font-bold text-zinc-600 uppercase tracking-[0.2em] cursor-default transition-all"
+          >
             &copy; {new Date().getFullYear()} SAFWAN NAZIR
           </p>
         </div>

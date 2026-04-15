@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-transparent selection:bg-black selection:text-white relative">
       <CarScene />
-      <div className="relative z-10 pointer-events-none *:pointer-events-auto">
+      <div className="relative z-10">
         <NavBar />
         <Hero />
         <Proficiencies />

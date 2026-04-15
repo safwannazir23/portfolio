@@ -117,8 +117,8 @@ const CarScene = () => {
   return (
     <>
       {/* Car Scene Canvas */}
-      <div className="fixed inset-0 z-[100] pointer-events-none w-full h-full">
-        <Canvas dpr={[1, 2]} shadows gl={{ antialias: true, toneMapping: THREE.ACESFilmicToneMapping }}>
+      <div className="fixed inset-0 -z-10 pointer-events-none w-full h-full">
+        <Canvas dpr={[1, 2]} shadows gl={{ antialias: true, toneMapping: THREE.ACESFilmicToneMapping }} style={{ pointerEvents: 'none' }}>
           <PerspectiveCamera makeDefault position={[0, 0, 15]} fov={40} />
           <Suspense fallback={null}>
             <CarModel params={params} />

@@ -43,7 +43,7 @@ const Certificates = () => {
     <section ref={container} className="py-24 px-8">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32">
         <div className="flex justify-start md:justify-end">
-          <h2 ref={titleRef} className="text-5xl md:text-7xl font-bold tracking-tighter text-black">Certificates</h2>
+          <h2 ref={titleRef} className="text-5xl md:text-7xl font-bold tracking-tighter text-red-500">Certificates</h2>
         </div>
         <div className="flex flex-col gap-10">
           {certificatesData.map((cert, index) => (

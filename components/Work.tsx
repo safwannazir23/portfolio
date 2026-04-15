@@ -90,7 +90,7 @@ const Work = () => {
         <div className="flex justify-start md:justify-end">
           <h2
             ref={titleRef}
-            className="text-5xl md:text-7xl font-bold tracking-tighter text-black h-fit"
+            className="text-5xl md:text-7xl font-bold tracking-tighter text-red-500 h-fit"
           >
             Work
           </h2>

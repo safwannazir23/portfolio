@@ -12,29 +12,25 @@ if (typeof window !== "undefined") {
 
 const projectsData = [
   {
-    title: "Shelf",
-    description: "Digital Library for Developers",
+    title: "KampBuzz",
+    description: "MERN, AWS S3, Postman, Figma, Vercel",
     icon: LayoutGrid,
-    color: "text-zinc-400"
+    color: "text-zinc-400",
+    link: "https://github.com/safwannazir923/kampbuzz"
   },
   {
-    title: "Locale",
-    description: "Lightweight Content Localization",
+    title: "Notes App",
+    description: "React.js, Tailwind CSS, Node.js, MongoDB, Vercel",
     icon: Sparkles,
-    color: "text-orange-400"
-  },
-  {
-    title: "Taskly",
-    description: "Minimal Task Manager",
-    icon: Zap,
-    color: "text-blue-400"
-  },
+    color: "text-orange-400",
+    link: "https://github.com/safwannazir923/notes_app"
+  }
 ];
 
 const Projects = () => {
   const container = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const cardRefs = useRef<(HTMLAnchorElement | null)[]>([]);
 
   useGSAP(() => {
     gsap.from(titleRef.current, {
@@ -46,10 +42,34 @@ const Projects = () => {
       if (!card) return;
       gsap.from(card, {
         scrollTrigger: { trigger: card, start: "top 90%" },
-        opacity: 0, scale: 0.95, y: 30, duration: 0.8, delay: index * 0.1, ease: "power3.out"
+        opacity: 0, scale: 0.95, y: 30, duration: 0.2, ease: "power3.out"
       });
     });
   }, { scope: container });
+
+  const onCardEnter = (index: number) => {
+    gsap.to(cardRefs.current[index], {
+      y: -10,
+      scale: 1.02,
+      borderColor: "rgba(0,0,0,0.2)",
+      backgroundColor: "rgba(255,255,255,1)",
+      boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
+      duration: 0.2,
+      ease: "power2.out"
+    });
+  };
+
+  const onCardLeave = (index: number) => {
+    gsap.to(cardRefs.current[index], {
+      y: 0,
+      scale: 1,
+      borderColor: "rgba(0,0,0,0.05)",
+      backgroundColor: "rgba(255,255,255,0.8)",
+      boxShadow: "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+      duration: 0.2,
+      ease: "power2.inOut"
+    });
+  };
 
   return (
     <section ref={container} className="py-24 px-8 relative">
@@ -58,27 +78,29 @@ const Projects = () => {
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32 relative z-10">
         <div className="flex justify-start md:justify-end">
-          <h2 ref={titleRef} className="text-5xl md:text-7xl font-bold tracking-tighter text-black">Projects</h2>
+          <h2 ref={titleRef} className="text-5xl md:text-7xl font-bold tracking-tighter text-red-500">Projects</h2>
         </div>
         <div className="flex flex-col gap-6 w-full max-w-md">
           {projectsData.map((project, index) => (
-            <div
+            <a
               key={project.title}
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
               ref={el => { cardRefs.current[index] = el; }}
-              className="group flex items-center gap-6 p-6 rounded-2xl bg-white/80 border border-black/5 hover:bg-white hover:border-black/20 transition-all duration-500 cursor-pointer shadow-lg backdrop-blur-sm"
+              onMouseEnter={() => onCardEnter(index)}
+              onMouseLeave={() => onCardLeave(index)}
+              className="group flex items-center gap-6 p-6 rounded-2xl bg-white/80 border border-black/5 transition-all duration-500 cursor-pointer shadow-lg backdrop-blur-sm"
             >
-              <div className={`p-4 rounded-xl bg-zinc-50 border border-black/5 group-hover:scale-110 transition-transform duration-500 shadow-sm ${project.color}`}>
+              <div className={`p-4 rounded-xl bg-zinc-50 border border-black/5 group-hover:bg-white group-hover:rotate-6 transition-all duration-500 shadow-sm ${project.color}`}>
                 <project.icon className="w-8 h-8" />
               </div>
               <div className="flex flex-col">
                 <h3 className="text-xl font-bold text-black mb-1 tracking-tight">{project.title}</h3>
                 <p className="text-zinc-600 font-medium text-sm">{project.description}</p>
               </div>
-            </div>
+            </a>
           ))}
-          <button className="mt-4 text-zinc-600 font-bold uppercase tracking-widest text-xs hover:text-black transition-colors duration-300 w-fit">
-            Load More
-          </button>
         </div>
       </div>
     </section>
