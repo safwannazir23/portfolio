@@ -11,7 +11,7 @@ import CarScene from "@/components/CarScene";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background selection:bg-black selection:text-white relative">
+    <main className="min-h-screen bg-transparent selection:bg-black selection:text-white relative">
       <CarScene />
       <div className="relative z-10 pointer-events-none *:pointer-events-auto">
         <NavBar />

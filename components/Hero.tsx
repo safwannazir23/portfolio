@@ -132,7 +132,7 @@ const Hero = () => {
       </div>
 
       {/* Bio at the bottom */}
-      <div className="mt-20 z-10 w-full max-w-7xl mx-auto border-t border-black/5 pt-12">
+      <div className="mt-20 z-10 w-full max-w-7xl mx-auto pt-12">
         <div ref={bioRef} className="max-w-xl self-end ml-auto">
           <p className="text-xl md:text-2xl text-zinc-600 leading-relaxed">
             When I'm not coding, you'll find me on the <span className="text-black font-semibold">tennis court</span>, gaming, or sharing a good meal with friends.

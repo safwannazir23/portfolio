@@ -34,7 +34,7 @@ const projectsData = [
 const Projects = () => {
   const container = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
-  const cardRefs = useRef<(HTMLDivElement|null)[]>([]);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useGSAP(() => {
     gsap.from(titleRef.current, {
@@ -53,9 +53,8 @@ const Projects = () => {
 
   return (
     <section ref={container} className="py-24 px-8 relative">
-       {/* Decorative grid for projects section */}
-       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] z-0 opacity-10 pointer-events-none"
-           style={{ backgroundImage: 'linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+      {/* Decorative grid for projects section */}
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] z-0 opacity-10 pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32 relative z-10">
         <div className="flex justify-start md:justify-end">
@@ -63,8 +62,8 @@ const Projects = () => {
         </div>
         <div className="flex flex-col gap-6 w-full max-w-md">
           {projectsData.map((project, index) => (
-            <div 
-              key={project.title} 
+            <div
+              key={project.title}
               ref={el => { cardRefs.current[index] = el; }}
               className="group flex items-center gap-6 p-6 rounded-2xl bg-white/80 border border-black/5 hover:bg-white hover:border-black/20 transition-all duration-500 cursor-pointer shadow-lg backdrop-blur-sm"
             >
