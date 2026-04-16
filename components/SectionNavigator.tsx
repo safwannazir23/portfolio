@@ -42,7 +42,7 @@ const SectionNavigator = () => {
     };
 
     return (
-        <nav className="fixed left-4 bottom-2 -translate-y-1/2 z-[100] flex flex-col gap-1 pointer-events-auto sm:flex hidden">
+        <nav className="fixed left-4 bottom-0 -translate-y-1/4 z-[100] flex flex-col gap-1 pointer-events-auto sm:flex hidden">
             {sections.map((section, index) => (
                 <button
                     key={section.id}

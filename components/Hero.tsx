@@ -134,8 +134,8 @@ const Hero = () => {
       {/* Bio at the bottom */}
       <div className="mt-20 z-10 w-full max-w-7xl mx-auto pt-12">
         <div ref={bioRef} className="max-w-xl self-end ml-auto">
-          <p className="text-xl md:text-2xl leading-relaxed hover:bg-red-500 hover:text-white hover:p-2 transition-all duration-300">
-            When I'm not coding, you'll find me on the <span className="text-black font-semibold">tennis court</span>, gaming, or sharing a good meal with friends.
+          <p className="text-xl leading-relaxed hover:bg-red-500 hover:text-white hover:p-2 transition-all duration-300">
+            When I'm not coding, you'll find me on the <span className="text-black font-semibold">tennis court</span>, or exploring the beautiful landscapes of Kashmir.
           </p>
         </div>
       </div>
