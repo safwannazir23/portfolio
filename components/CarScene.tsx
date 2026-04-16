@@ -189,12 +189,29 @@ const CarScene = () => {
 
   const [isOpen, setIsOpen] = useState(false);
 
-  // Global refresh for initial load stabilization
+  // Global refresh for initial load stabilization & Responsive scaling
   React.useEffect(() => {
+    const handleResize = () => {
+      const isMobile = window.innerWidth < 768;
+      setParams(prev => ({
+        ...prev,
+        scale: isMobile ? 0.3 : 0.5,
+        startY: isMobile ? 8 : 6,
+        endY: isMobile ? -8.5 : -6.5
+      }));
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
     const timer = setTimeout(() => {
       ScrollTrigger.refresh();
     }, 2000);
-    return () => clearTimeout(timer);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      clearTimeout(timer);
+    };
   }, []);
 
   return (

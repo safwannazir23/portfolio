@@ -91,7 +91,7 @@ const Hero = () => {
         <div className="flex-1">
           <h1
             ref={nameRef}
-            className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-tighter leading-none py-2 overflow-hidden whitespace-nowrap"
+            className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-tighter leading-none py-2 overflow-hidden whitespace-nowrap"
           >
             {"SAFWAN NAZIR".split("").map((char, index) => (
               <span key={index} className="char inline-block min-w-[0.1em]">

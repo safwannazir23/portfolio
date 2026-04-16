@@ -73,7 +73,7 @@ const Footer = () => {
       {/* Left Flag */}
       <div
         ref={leftFlag}
-        className="absolute left-16 md:left-24 bottom-0 flex flex-col items-center pointer-events-none origin-bottom"
+        className="hidden md:flex absolute left-16 md:left-24 bottom-0 flex-col items-center pointer-events-none origin-bottom"
       >
         {/* Pole Finial */}
         <div className="w-4 h-4 bg-zinc-800 rounded-full mb-[-4px] shadow-md z-20" />
@@ -93,7 +93,7 @@ const Footer = () => {
       {/* Right Flag */}
       <div
         ref={rightFlag}
-        className="absolute right-16 md:right-24 bottom-0 flex flex-col items-center pointer-events-none origin-bottom"
+        className="hidden md:flex absolute right-16 md:right-24 bottom-0 flex-col items-center pointer-events-none origin-bottom"
       >
         <div className="w-4 h-4 bg-zinc-800 rounded-full mb-[-4px] shadow-md z-20" />
         <div className="w-1.5 h-64 bg-gradient-to-b from-zinc-700 to-black rounded-t-full shadow-lg z-10" />
