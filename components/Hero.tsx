@@ -120,11 +120,11 @@ const Hero = () => {
           {/* About Info */}
           <div ref={infoRef} className="flex flex-col gap-2 max-w-xs">
             <div className="space-y-4 mt-6">
-              <div className="space-y-1 text-zinc-600 font-medium">
-                <p>Software Developer</p>
-                <p>Based in Srinagar</p>
-                <p>1+ Years Experience</p>
-                <p className="text-black">Open to Work</p>
+              <div className="space-y-1 text-zinc-600 font-medium bg-red-500 p-2">
+                <p className="bg-white p-1">Software Developer</p>
+                <p className="bg-white p-1">Based in Srinagar</p>
+                <p className="bg-white p-1">1+ Years Experience</p>
+                <p className="text-white p-1">Open to Work</p>
               </div>
             </div>
           </div>
@@ -134,13 +134,13 @@ const Hero = () => {
       {/* Bio at the bottom */}
       <div className="mt-20 z-10 w-full max-w-7xl mx-auto pt-12">
         <div ref={bioRef} className="max-w-xl self-end ml-auto">
-          <p className="text-xl md:text-2xl text-zinc-600 leading-relaxed">
+          <p className="text-xl md:text-2xl leading-relaxed hover:bg-red-500 hover:text-white hover:p-2 transition-all duration-300">
             When I'm not coding, you'll find me on the <span className="text-black font-semibold">tennis court</span>, gaming, or sharing a good meal with friends.
           </p>
         </div>
       </div>
     </section>
-  );
+  )
 };
 
 
