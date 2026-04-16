@@ -8,20 +8,52 @@ import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import CarScene from "@/components/CarScene";
+import LapFinishedIndicator from "@/components/LapFinishedIndicator";
+import LapCounter from "@/components/LapCounter";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-transparent selection:bg-black selection:text-white relative">
       <CarScene />
+      <LapCounter />
       <div className="relative z-10">
         <NavBar />
-        <Hero />
-        <Proficiencies />
-        <Work />
-        <Education />
-        <Certificates />
-        <Projects />
-        <Contact />
+        
+        <div id="hero">
+          <Hero />
+        </div>
+        <LapFinishedIndicator lap={1} />
+
+        <div id="proficiencies">
+          <Proficiencies />
+        </div>
+        <LapFinishedIndicator lap={2} />
+
+        <div id="work">
+          <Work />
+        </div>
+        <LapFinishedIndicator lap={3} />
+
+        <div id="education">
+          <Education />
+        </div>
+        <LapFinishedIndicator lap={4} />
+
+        <div id="certificates">
+          <Certificates />
+        </div>
+        <LapFinishedIndicator lap={5} />
+
+        <div id="projects">
+          <Projects />
+        </div>
+        <LapFinishedIndicator lap={6} />
+
+        <div id="contact">
+          <Contact />
+        </div>
+        <LapFinishedIndicator lap={7} />
+
         <Footer />
       </div>
     </main>
