@@ -52,18 +52,27 @@ const Proficiencies = () => {
     sectionRefs.current.forEach((section, index) => {
       if (!section) return;
 
-      gsap.from(section, {
+      const sectionTl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
           start: "top 85%",
           toggleActions: "play none none reverse",
-        },
+        }
+      });
+
+      sectionTl.from(section, {
         opacity: 0,
         y: 30,
         duration: 0.8,
-        delay: index * 0.1,
         ease: "power3.out",
-      });
+      })
+        .from(section.querySelectorAll(".prof-item"), {
+          x: 20,
+          opacity: 0,
+          stagger: 0.1,
+          duration: 0.5,
+          ease: "power2.out"
+        }, "-=0.4");
     });
   }, { scope: container });
 
@@ -94,7 +103,7 @@ const Proficiencies = () => {
                 </h3>
                 <ul className="flex flex-wrap sm:flex-col gap-x-6 gap-y-2 text-zinc-600 font-medium text-lg">
                   {group.items.map((item) => (
-                    <li key={item} className="hover:text-black transition-colors duration-300">
+                    <li key={item} className="prof-item text-white bg-red-500 transition-colors duration-300 px-2 py-1">
                       {item}
                     </li>
                   ))}

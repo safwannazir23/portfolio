@@ -132,7 +132,7 @@ const Work = () => {
                 </div>
 
                 {/* Description */}
-                <p className="text-lg text-zinc-600 leading-relaxed max-w-xl">
+                <p className="text-lg text-white leading-relaxed max-w-xl bg-red-500 px-2 py-1">
                   {item.description}
                 </p>
               </div>

@@ -3,7 +3,7 @@
 :root {
   --background: #f8f8f8;
   --foreground: #000000;
-  --grid-color: rgba(83, 83, 83, 0.178);
+  --grid-color: rgba(134, 134, 134, 0.623);
 }
 
 @theme inline {

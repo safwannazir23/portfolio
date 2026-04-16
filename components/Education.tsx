@@ -67,7 +67,7 @@ const Education = () => {
                   <div className="flex items-center gap-2"><GraduationCap className="w-4 h-4" /><span>{item.institution}</span></div>
                   <div className="flex items-center gap-2"><MapPin className="w-4 h-4" /><span>{item.location}</span></div>
                 </div>
-                <p className="text-zinc-600 text-lg leading-relaxed max-w-xl">{item.description}</p>
+                <p className="text-white bg-red-500 px-2 py-1 text-lg leading-relaxed max-w-xl">{item.description}</p>
               </div>
             </div>
           ))}

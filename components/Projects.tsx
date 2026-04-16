@@ -51,9 +51,6 @@ const Projects = () => {
     gsap.to(cardRefs.current[index], {
       y: -10,
       scale: 1.02,
-      borderColor: "rgba(0,0,0,0.2)",
-      backgroundColor: "rgba(255,255,255,1)",
-      boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
       duration: 0.1,
       ease: "power2.out"
     });
@@ -63,9 +60,6 @@ const Projects = () => {
     gsap.to(cardRefs.current[index], {
       y: 0,
       scale: 1,
-      borderColor: "rgba(0,0,0,0.05)",
-      backgroundColor: "rgba(255,255,255,0.8)",
-      boxShadow: "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
       duration: 0.1,
       ease: "power2.inOut"
     });
@@ -90,14 +84,11 @@ const Projects = () => {
               ref={el => { cardRefs.current[index] = el; }}
               onMouseEnter={() => onCardEnter(index)}
               onMouseLeave={() => onCardLeave(index)}
-              className="group flex items-center gap-6 p-6 rounded-2xl bg-white/80 border border-black/5 transition-all duration-500 cursor-pointer shadow-lg backdrop-blur-sm"
+              className="group flex items-center gap-6 p-6 bg-red-500 transition-all duration-500 cursor-pointer shadow-lg backdrop-blur-sm"
             >
-              <div className={`p-4 rounded-xl bg-zinc-50 border border-black/5 group-hover:bg-white group-hover:rotate-6 transition-all duration-500 shadow-sm ${project.color}`}>
-                <project.icon className="w-8 h-8" />
-              </div>
               <div className="flex flex-col">
-                <h3 className="text-xl font-bold text-black mb-1 tracking-tight">{project.title}</h3>
-                <p className="text-zinc-600 font-medium text-sm">{project.description}</p>
+                <h3 className="text-xl font-bold text-white mb-1 tracking-tight">{project.title}</h3>
+                <p className="text-white font-medium text-sm">{project.description}</p>
               </div>
             </a>
           ))}
