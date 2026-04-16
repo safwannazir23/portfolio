@@ -10,12 +10,14 @@ import Footer from "@/components/Footer";
 import CarScene from "@/components/CarScene";
 import LapFinishedIndicator from "@/components/LapFinishedIndicator";
 import LapCounter from "@/components/LapCounter";
+import SectionNavigator from "@/components/SectionNavigator";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-transparent selection:bg-black selection:text-white relative">
       <CarScene />
       <LapCounter />
+      <SectionNavigator />
       <div className="relative z-10">
         <NavBar />
         
