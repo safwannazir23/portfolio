@@ -3,6 +3,7 @@
 import React, { useRef, Suspense, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { useGLTF, Environment, PerspectiveCamera, ContactShadows } from "@react-three/drei";
+import { useThree } from "@react-three/fiber";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -18,8 +19,15 @@ useGLTF.preload("/model/f1.glb");
 
 const CarModel = ({ params }: { params: any }) => {
   const { scene } = useGLTF("/model/f1.glb");
+  const { camera, scene: threeScene } = useThree();
   const modelRef = useRef<THREE.Group>(null);
   const vibrationRef = useRef<THREE.Group>(null);
+  
+  const isDragging = useRef(false);
+  const startX = useRef(0);
+  const currentDragX = useRef(0);
+  const raycaster = useRef(new THREE.Raycaster());
+  const mouse = useRef(new THREE.Vector2());
 
   useGSAP(() => {
     if (!modelRef.current) return;
@@ -40,24 +48,96 @@ const CarModel = ({ params }: { params: any }) => {
     });
 
     // We define the starting position directly in the first frame of the timeline
-    tl.set(modelRef.current.position, { y: params.startY, x: 0 }, 0);
+    tl.set(modelRef.current.position, { y: params.startY }, 0);
 
     const totalSections = params.sections || 7;
 
     for (let i = 0; i < totalSections; i++) {
-      const nextY = params.startY - ((i + 1) * (params.startY - params.endY) / totalSections);
+        const nextY = params.startY - ((i + 1) * (params.startY - params.endY) / totalSections);
 
-      tl.to(modelRef.current.position, {
-        y: nextY,
-        ease: "power2.inOut",
-        duration: params.moveDuration
-      });
+        tl.to(modelRef.current.position, {
+            y: nextY,
+            ease: "power2.inOut",
+            duration: params.moveDuration
+        });
 
-      tl.to(modelRef.current.position, {
-        y: nextY,
-        duration: params.pauseDuration
-      });
+        tl.to(modelRef.current.position, {
+            y: nextY,
+            duration: params.pauseDuration
+        });
     }
+
+    // Drag Logic
+    const onMouseDown = (e: MouseEvent | PointerEvent) => {
+        mouse.current.x = (e.clientX / window.innerWidth) * 2 - 1;
+        mouse.current.y = -(e.clientY / window.innerHeight) * 2 + 1;
+        raycaster.current.setFromCamera(mouse.current, camera);
+        
+        const intersects = raycaster.current.intersectObjects(scene.children, true);
+        if (intersects.length > 0) {
+            isDragging.current = true;
+            startX.current = e.clientX;
+            document.body.style.cursor = 'grabbing';
+        }
+    };
+
+    const onMouseMove = (e: MouseEvent | PointerEvent) => {
+        // Handle cursor hover
+        if (!isDragging.current) {
+            mouse.current.x = (e.clientX / window.innerWidth) * 2 - 1;
+            mouse.current.y = -(e.clientY / window.innerHeight) * 2 + 1;
+            raycaster.current.setFromCamera(mouse.current, camera);
+            const intersects = raycaster.current.intersectObjects(scene.children, true);
+            if (intersects.length > 0) {
+                if (document.body.style.cursor !== 'grab') document.body.style.cursor = 'grab';
+            } else {
+                if (document.body.style.cursor === 'grab') document.body.style.cursor = 'default';
+            }
+        }
+
+        if (!isDragging.current) return;
+
+        const delta = (e.clientX - startX.current) * 0.015;
+        startX.current = e.clientX;
+        currentDragX.current = Math.max(-5, Math.min(5, currentDragX.current + delta));
+
+        gsap.to(modelRef.current.position, {
+            x: currentDragX.current,
+            duration: 0.6,
+            ease: "power3.out"
+        });
+
+        // Add some banking/roll when dragging
+        gsap.to(modelRef.current.rotation, {
+            z: -currentDragX.current * 0.15,
+            duration: 0.8,
+            ease: "power2.out"
+        });
+    };
+
+    const onMouseUp = () => {
+        isDragging.current = false;
+        document.body.style.cursor = 'default';
+
+        // Return to original state quickly when released
+        if (modelRef.current) {
+            gsap.to(modelRef.current.position, {
+                x: 0,
+                duration: 1.2,
+                ease: "elastic.out(1.1, 0.6)"
+            });
+            gsap.to(modelRef.current.rotation, {
+                z: 0,
+                duration: 1.2,
+                ease: "elastic.out(1.1, 0.6)"
+            });
+        }
+        currentDragX.current = 0;
+    };
+
+    window.addEventListener('pointerdown', onMouseDown);
+    window.addEventListener('pointermove', onMouseMove);
+    window.addEventListener('pointerup', onMouseUp);
 
     // Vibration on the INNER group so it doesn't fight with the scroll position
     if (vibrationRef.current) {
@@ -74,9 +154,13 @@ const CarModel = ({ params }: { params: any }) => {
     return () => {
       clearTimeout(scrollTask);
       tl.kill();
+      window.removeEventListener('pointerdown', onMouseDown);
+      window.removeEventListener('pointermove', onMouseMove);
+      window.removeEventListener('pointerup', onMouseUp);
+      document.body.style.cursor = 'default';
     };
 
-  }, { dependencies: [scene, params] });
+  }, [scene, params, camera]);
 
   return (
     <group ref={modelRef} scale={params.scale} rotation={[Math.PI / 2.5, 0, 0]} position={[0, params.startY, 0]}>
@@ -117,6 +201,8 @@ const CarScene = () => {
     <>
       {/* Car Scene Canvas */}
       <div className="fixed inset-0 z-[100] pointer-events-none w-full h-full">
+        {/* We keep pointer-events-none on the canvas to allow clicking through to links, 
+            but we handle drag via window listeners inside the component */}
         <Canvas dpr={[1, 2]} shadows gl={{ antialias: true, toneMapping: THREE.ACESFilmicToneMapping }} style={{ pointerEvents: 'none' }}>
           <PerspectiveCamera makeDefault position={[0, 0, 15]} fov={40} />
           <Suspense fallback={null}>
