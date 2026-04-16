@@ -42,7 +42,7 @@ const SectionNavigator = () => {
     };
 
     return (
-        <nav className="fixed left-4 top-1/2 -translate-y-1/2 z-[100] flex flex-col gap-1 pointer-events-auto sm:flex hidden">
+        <nav className="fixed left-4 bottom-2 -translate-y-1/2 z-[100] flex flex-col gap-1 pointer-events-auto sm:flex hidden">
             {sections.map((section, index) => (
                 <button
                     key={section.id}
@@ -56,8 +56,8 @@ const SectionNavigator = () => {
 
                     {/* Main Tag Body */}
                     <div className={`relative px-4 py-2 transform skew-x-[-15deg] transition-all duration-300 border-l-2 ${activeSection === section.id
-                            ? "bg-black text-white border-red-600 translate-x-2"
-                            : "bg-white/80 backdrop-blur-sm text-black border-black border opacity-70 group-hover:opacity-100 group-hover:bg-black group-hover:text-white"
+                        ? "bg-black text-white border-red-600 translate-x-2"
+                        : "bg-white/80 backdrop-blur-sm text-black border-black border opacity-70 group-hover:opacity-100 group-hover:bg-black group-hover:text-white"
                         }`}>
                         <div className="flex items-center gap-3 transform skew-x-[15deg]">
                             <span className={`text-[10px] font-mono font-bold ${activeSection === section.id ? "text-red-500" : "text-zinc-400 group-hover:text-red-500"
