@@ -62,7 +62,7 @@ const Hero = () => {
     const loop = horizontalLoop(marqueeItems, {
       repeat: -1,
       paddingRight: 50,
-      speed: 1.5,
+      speed: 1.3,
     });
 
     Observer.create({
@@ -91,7 +91,7 @@ const Hero = () => {
         <div className="flex-1">
           <h1
             ref={nameRef}
-            className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-tighter leading-none overflow-hidden whitespace-nowrap"
+            className="mt-2 text-[3.2rem] sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-tighter leading-none overflow-hidden whitespace-nowrap"
           >
             {"SAFWAN NAZIR".split("").map((char, index) => (
               <span key={index} className="char inline-block min-w-[0.1em]">
@@ -106,14 +106,14 @@ const Hero = () => {
           {/* Portrait Image */}
 
           {/* GSAP Marquee */}
-          <div className="absolute top-[45vh] left-0 w-full overflow-hidden whitespace-nowrap pointer-events-none z-0">
+          <div className="absolute top-[75vh] md:top-[45vh] left-0 w-full overflow-hidden whitespace-nowrap pointer-events-none z-0">
             <div className="marquee-inner flex whitespace-nowrap text-[18vw] font-black uppercase leading-none text-red-500 select-none">
-              <span className="marquee-item mr-20">HELLO WORLD</span>
-              <span className="marquee-item mr-20">HELLO WORLD</span>
-              <span className="marquee-item mr-20">HELLO WORLD</span>
-              <span className="marquee-item mr-20">HELLO WORLD</span>
-              <span className="marquee-item mr-20">HELLO WORLD</span>
-              <span className="marquee-item mr-20">HELLO WORLD</span>
+              <span className="marquee-item mr-20">ENGINEERED FOR SPEED</span>
+              <span className="marquee-item mr-20">ENGINEERED FOR SPEED</span>
+              <span className="marquee-item mr-20">ENGINEERED FOR SPEED</span>
+              <span className="marquee-item mr-20">ENGINEERED FOR SPEED</span>
+              <span className="marquee-item mr-20">ENGINEERED FOR SPEED</span>
+              <span className="marquee-item mr-20">ENGINEERED FOR SPEED</span>
             </div>
           </div>
 

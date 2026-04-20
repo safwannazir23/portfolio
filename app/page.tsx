@@ -20,9 +20,9 @@ export default function Home() {
       <StartLights />
       <LapCounter />
       <SectionNavigator />
-      <div className="relative z-10">
+      <div className="relative z-10 min-w-[470px]">
         <NavBar />
-        
+
         <div id="hero">
           <Hero />
         </div>
