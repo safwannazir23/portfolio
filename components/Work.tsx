@@ -33,7 +33,7 @@ const workData = [
     duration: "FEB 2024 - AUG 2024",
     company: "WazirOne",
     location: "Srinagar",
-    description: "• Collaborated with a team of 4 developers to design, develop, and deploy web applications in an agile environment tailored to client requirements. • Built and maintained front-end and back-end components of the system - used React.js as a front-end library, Shad/cn and Tailwind CSS for UI, Node.js, and Express.js to develop the backend API, MongoDB and AWS S3 for storage, and Vercel automatic CI and CD.",
+    description: "Collaborated with a team of 4 developers to design, develop, and deploy web applications in an agile environment tailored to client requirements. Built and maintained front-end and back-end components of the system - used React.js as a front-end library, Shad/cn and Tailwind CSS for UI, Node.js, and Express.js to develop the backend API, MongoDB and AWS S3 for storage, and Vercel automatic CI and CD.",
   }
   ,
   {
@@ -41,7 +41,7 @@ const workData = [
     duration: "NOV 2023 - JAN 2024",
     company: "Eonify Tech",
     location: "Srinagar",
-    description: " Collaborated with a team of 3 developers to design and develop a web-based LMS application. • Developed a responsive and dynamic front-end for an LMS-based application using React.js library and Bootstrap for styling components, and integrated WebSocket for real-time chat functionality.",
+    description: " Collaborated with a team of 3 developers to design and develop a web-based LMS application. Developed a responsive and dynamic front-end for an LMS-based application using React.js library and Bootstrap for styling components, and integrated WebSocket for real-time chat functionality.",
   },
 ];
 
