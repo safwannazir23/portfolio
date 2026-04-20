@@ -50,25 +50,25 @@ const LapFinishedIndicator = ({ lap }: LapFinishedIndicatorProps) => {
 
       <div ref={textRef} className="z-10 flex flex-col items-center px-4 w-full">
         <div className="flex flex-col items-center text-center">
-            <h3 className="text-2xl sm:text-4xl md:text-6xl font-black italic tracking-tighter text-black uppercase leading-tight">
-                {lap === 7 ? "RACE COMPLETE" : <>LAP <span className="text-red-600">{lap}</span> COMPLETE</>}
-            </h3>
-            <div className="h-0.5 w-24 bg-red-600 mt-2"></div>
+          <h3 className="text-2xl sm:text-4xl md:text-6xl font-black italic tracking-tighter text-black uppercase leading-tight">
+            {lap === 7 ? "RACE COMPLETE" : <>LAP <span className="text-red-600">{lap}</span></>}
+          </h3>
+          <div className="h-0.5 w-24 bg-red-600 mt-2"></div>
         </div>
-        
+
         <div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-12 mt-6">
-            <div className="flex flex-col items-center">
-                <span className="text-[8px] sm:text-[10px] font-mono text-zinc-500 uppercase tracking-[0.3em]">Status</span>
-                <span className="text-xs sm:text-sm font-bold text-zinc-400 mt-1 uppercase whitespace-nowrap">{lap === 7 ? "Checkered Flag" : "Green Flag"}</span>
-            </div>
-            <div className="flex flex-col items-center sm:border-x border-zinc-200 sm:px-6 md:px-12">
-                <span className="text-[8px] sm:text-[10px] font-mono text-zinc-500 uppercase tracking-[0.3em]">Next Stage</span>
-                <span className="text-xs sm:text-sm font-bold text-black mt-1 uppercase italic whitespace-nowrap">{lap === 7 ? "Podium" : `Sector ${lap + 1}`}</span>
-            </div>
-            <div className="flex flex-col items-center">
-                <span className="text-[8px] sm:text-[10px] font-mono text-zinc-500 uppercase tracking-[0.3em]">Interval</span>
-                <span className="text-xs sm:text-sm font-bold text-red-600 mt-1 uppercase">{lap === 7 ? "P1" : "+0.000s"}</span>
-            </div>
+          <div className="flex flex-col items-center">
+            <span className="text-[8px] sm:text-[10px] font-mono text-zinc-500 uppercase tracking-[0.3em]">Status</span>
+            <span className="text-xs sm:text-sm font-bold text-zinc-400 mt-1 uppercase whitespace-nowrap">{lap === 7 ? "Checkered Flag" : "Green Flag"}</span>
+          </div>
+          <div className="flex flex-col items-center sm:border-x border-zinc-200 sm:px-6 md:px-12">
+            <span className="text-[8px] sm:text-[10px] font-mono text-zinc-500 uppercase tracking-[0.3em]">Next Stage</span>
+            <span className="text-xs sm:text-sm font-bold text-black mt-1 uppercase italic whitespace-nowrap">{lap === 7 ? "Podium" : `Sector ${lap + 1}`}</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <span className="text-[8px] sm:text-[10px] font-mono text-zinc-500 uppercase tracking-[0.3em]">Interval</span>
+            <span className="text-xs sm:text-sm font-bold text-red-600 mt-1 uppercase">{lap === 7 ? "P1" : "+0.000s"}</span>
+          </div>
         </div>
       </div>
 

@@ -3,7 +3,7 @@
 :root {
   --background: #f8f8f8;
   --foreground: #000000;
-  --grid-color: rgba(231, 231, 231, 0.623);
+  --grid-color: rgba(204, 204, 204, 0.192);
 }
 
 @theme inline {
@@ -19,6 +19,24 @@ body {
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ff0000;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #cc0000;
 }
 
 .bg-checkered {

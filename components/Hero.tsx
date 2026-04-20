@@ -91,7 +91,7 @@ const Hero = () => {
         <div className="flex-1">
           <h1
             ref={nameRef}
-            className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-tighter leading-none py-2 overflow-hidden whitespace-nowrap"
+            className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-tighter leading-none overflow-hidden whitespace-nowrap"
           >
             {"SAFWAN NAZIR".split("").map((char, index) => (
               <span key={index} className="char inline-block min-w-[0.1em]">
@@ -120,6 +120,9 @@ const Hero = () => {
           {/* About Info */}
           <div ref={infoRef} className="flex flex-col gap-2 max-w-xs">
             <div className="space-y-4 mt-6">
+              <div className="bg-black text-white font-semibold p-2">
+                DRIVER PROFILE
+              </div>
               <div className="space-y-1 text-zinc-600 font-medium bg-red-500 p-2">
                 <p className="bg-white p-1">Software Developer</p>
                 <p className="bg-white p-1">Based in Srinagar</p>
@@ -135,7 +138,7 @@ const Hero = () => {
       <div className="mt-20 z-10 w-full max-w-7xl mx-auto pt-12">
         <div ref={bioRef} className="max-w-xl self-end ml-auto">
           <p className="text-xl leading-relaxed hover:bg-red-500 hover:text-white hover:p-2 transition-all duration-300">
-            When I'm not coding, you'll find me on the <span className="text-black font-semibold">tennis court</span>, or exploring the beautiful landscapes of Kashmir.
+            When I'm not coding, you'll find me on the <span className="text-black font-semibold">badminton court</span>, or exploring the beautiful landscapes of Kashmir.
           </p>
         </div>
       </div>

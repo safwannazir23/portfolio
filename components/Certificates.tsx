@@ -47,9 +47,9 @@ const Certificates = () => {
         </div>
         <div className="flex flex-col gap-10">
           {certificatesData.map((cert, index) => (
-            <div key={index} ref={el => { itemRefs.current[index] = el; }} className="pb-6 border-b border-black/5 last:border-none">
-              <h3 className="text-xl font-bold text-black mb-2">{cert.name}</h3>
-              <p className="text-zinc-600 font-medium">{cert.year} at {cert.provider}</p>
+            <div key={index} ref={el => { itemRefs.current[index] = el; }} className="p-2 border-b border-black/5 last:border-none bg-red-500">
+              <h3 className="text-xl font-bold text-white mb-2">{cert.name}</h3>
+              <p className="text-white font-medium">{cert.year} at {cert.provider}</p>
             </div>
           ))}
         </div>

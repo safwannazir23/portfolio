@@ -71,9 +71,9 @@ const SectionNavigator = () => {
                     </div>
 
                     {/* Active Pointer */}
-                    {activeSection === section.id && (
+                    {/* {activeSection === section.id && (
                         <div className="absolute -left-2 w-1 h-full bg-red-600"></div>
-                    )}
+                    )} */}
                 </button>
             ))}
 

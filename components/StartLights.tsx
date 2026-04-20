@@ -83,13 +83,13 @@ const StartLights = () => {
           >
             {/* LED 1 */}
             <div className="relative w-8 h-8 rounded-full bg-zinc-800 border-2 border-zinc-900 transition-shadow duration-200">
-              <div className="light-red absolute inset-0 rounded-full bg-zinc-800"></div>
-              <div className="light-green absolute inset-0 rounded-full bg-zinc-800"></div>
+              <div className="light-red absolute inset-0 rounded-full bg-red-600"></div>
+              <div className="light-green absolute inset-0 rounded-full bg-red-600"></div>
             </div>
             {/* LED 2 */}
             <div className="relative w-8 h-8 rounded-full bg-zinc-800 border-2 border-zinc-900 transition-shadow duration-200">
-              <div className="light-red absolute inset-0 rounded-full bg-zinc-800"></div>
-              <div className="light-green absolute inset-0 rounded-full bg-zinc-800"></div>
+              <div className="light-red absolute inset-0 rounded-full bg-red-600"></div>
+              <div className="light-green absolute inset-0 rounded-full bg-red-600"></div>
             </div>
           </div>
         ))}
