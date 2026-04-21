@@ -35,7 +35,7 @@ const Projects = () => {
   useGSAP(() => {
     gsap.from(titleRef.current, {
       scrollTrigger: { trigger: titleRef.current, start: "top 85%" },
-      opacity: 0, x: -50, duration: 1, ease: "power3.out"
+      opacity: 0, x: -30, duration: 0.8, ease: "expo.out"
     });
 
     cardRefs.current.forEach((card, index) => {

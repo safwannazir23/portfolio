@@ -36,14 +36,14 @@ const Education = () => {
   useGSAP(() => {
     gsap.from(titleRef.current, {
       scrollTrigger: { trigger: titleRef.current, start: "top 85%" },
-      opacity: 0, x: -50, duration: 1, ease: "power3.out"
+      opacity: 0, x: -30, duration: 0.8, ease: "expo.out"
     });
 
     itemRefs.current.forEach((item, index) => {
       if (!item) return;
       gsap.from(item, {
         scrollTrigger: { trigger: item, start: "top 90%" },
-        opacity: 0, y: 30, duration: 0.8, delay: index * 0.1, ease: "power3.out"
+        opacity: 0, y: 20, duration: 0.6, delay: index * 0.08, ease: "expo.out"
       });
     });
   }, { scope: container });

@@ -43,9 +43,9 @@ const Proficiencies = () => {
         toggleActions: "play none none reverse",
       },
       opacity: 0,
-      x: -50,
-      duration: 1,
-      ease: "power3.out",
+      x: -30,
+      duration: 0.8,
+      ease: "expo.out",
     });
 
     // Sections animation
@@ -62,17 +62,17 @@ const Proficiencies = () => {
 
       sectionTl.from(section, {
         opacity: 0,
-        y: 30,
-        duration: 0.8,
-        ease: "power3.out",
+        y: 20,
+        duration: 0.6,
+        ease: "expo.out",
       })
         .from(section.querySelectorAll(".prof-item"), {
-          x: 20,
+          x: 15,
           opacity: 0,
-          stagger: 0.1,
-          duration: 0.5,
-          ease: "power2.out"
-        }, "-=0.4");
+          stagger: 0.05,
+          duration: 0.4,
+          ease: "expo.out"
+        }, "-=0.3");
     });
   }, { scope: container });
 

@@ -26,15 +26,15 @@ const LapFinishedIndicator = ({ lap }: LapFinishedIndicatorProps) => {
       },
     });
 
-    tl.from(lineTop.current, { scaleX: 0, duration: 1, ease: "power4.inOut" })
-      .from(lineBottom.current, { scaleX: 0, duration: 1, ease: "power4.inOut" }, "-=0.8")
+    tl.from(lineTop.current, { scaleX: 0, duration: 0.6, ease: "expo.inOut" })
+      .from(lineBottom.current, { scaleX: 0, duration: 0.6, ease: "expo.inOut" }, "-=0.4")
       .from(textRef.current, {
         y: 40,
         opacity: 0,
         filter: "blur(4px)",
-        duration: 0.8,
-        ease: "power2.out",
-      }, "-=0.5");
+        duration: 0.5,
+        ease: "expo.out",
+      }, "-=0.3");
   }, { scope: container });
 
   return (

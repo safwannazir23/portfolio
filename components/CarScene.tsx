@@ -35,7 +35,7 @@ const CarModel = ({ params }: { params: any }) => {
     // Power Refresh to ensure correct scroll height
     const scrollTask = setTimeout(() => {
       ScrollTrigger.refresh();
-    }, 1000);
+    }, 500);
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -175,7 +175,7 @@ const CarModel = ({ params }: { params: any }) => {
 const CarScene = () => {
   const [params, setParams] = useState({
     scale: 0.5,
-    scrub: 1.9,
+    scrub: 1.2,
     startY: 6,
     endY: -6.5,
     sections: 7,
@@ -206,7 +206,7 @@ const CarScene = () => {
 
     const timer = setTimeout(() => {
       ScrollTrigger.refresh();
-    }, 2000);
+    }, 1000);
 
     return () => {
       window.removeEventListener('resize', handleResize);

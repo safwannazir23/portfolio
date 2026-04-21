@@ -24,14 +24,14 @@ const Contact = () => {
   useGSAP(() => {
     gsap.from(titleRef.current, {
       scrollTrigger: { trigger: titleRef.current, start: "top 85%" },
-      opacity: 0, x: -50, duration: 1, ease: "power3.out"
+      opacity: 0, x: -30, duration: 0.8, ease: "expo.out"
     });
 
     linkRefs.current.forEach((link, index) => {
       if (!link) return;
       gsap.from(link, {
         scrollTrigger: { trigger: link, start: "top 95%" },
-        opacity: 0, x: 20, duration: 0.6, delay: 0.2 + (index * 0.1), ease: "power3.out"
+        opacity: 0, x: 15, duration: 0.5, delay: 0.1 + (index * 0.05), ease: "expo.out"
       });
     });
   }, { scope: container });

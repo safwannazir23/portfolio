@@ -37,7 +37,7 @@ const LapCounter = () => {
     if (lapRef.current) {
       gsap.fromTo(lapRef.current,
         { scale: 1.5, color: "#ef4444" },
-        { scale: 1, color: "#000000", duration: 0.5, ease: "back.out(2)" }
+        { scale: 1, color: "#000000", duration: 0.3, ease: "expo.out" }
       );
     }
   }, [currentLap]);

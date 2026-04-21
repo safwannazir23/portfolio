@@ -22,37 +22,37 @@ const Hero = () => {
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
     tl.from(".char", {
-      y: 140,
+      y: 100,
       opacity: 0,
-      stagger: 0.05,
-      duration: 1,
-      ease: "power4.out",
-      delay: 0.5,
+      stagger: 0.03,
+      duration: 0.8,
+      ease: "expo.out",
+      delay: 0.1,
     })
       .from(
         imageRef.current,
         {
-          scale: 0.8,
+          scale: 0.9,
           opacity: 0,
-          duration: 1,
-        },
-        "-=0.8"
-      )
-      .from(
-        infoRef.current,
-        {
-          x: 50,
-          opacity: 0,
-          duration: 1,
+          duration: 0.6,
         },
         "-=0.6"
       )
       .from(
+        infoRef.current,
+        {
+          x: 30,
+          opacity: 0,
+          duration: 0.6,
+        },
+        "-=0.5"
+      )
+      .from(
         bioRef.current,
         {
-          y: 30,
+          y: 20,
           opacity: 0,
-          duration: 1,
+          duration: 0.6,
         },
         "-=0.4"
       );

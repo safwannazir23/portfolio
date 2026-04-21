@@ -18,18 +18,29 @@ const MouseFollower = () => {
       opacity: 0
     });
 
+    const xSetters = Array.from(followers).map(f => gsap.quickSetter(f, "x", "px"));
+    const ySetters = Array.from(followers).map(f => gsap.quickSetter(f, "y", "px"));
+    const opacitySetters = Array.from(followers).map(f => gsap.quickSetter(f, "opacity"));
+
     const onMove = (e: MouseEvent) => {
       const { clientX, clientY } = e;
 
-      followers.forEach((follower, i) => {
-        gsap.to(follower, {
-          x: clientX,
-          y: clientY,
-          opacity: 1, // Ensure visible while moving
-          duration: 0.1,
-          delay: i * 0.05,
-          ease: "power2.out"
-        });
+      followers.forEach((_, i) => {
+        // Use quickSetter for high-frequency updates
+        if (i === 0) {
+            xSetters[i](clientX);
+            ySetters[i](clientY);
+            opacitySetters[i](1);
+        } else {
+            // Add a slight lag for the second layer using conventional tween but with very short duration
+            gsap.to(followers[i], {
+              x: clientX,
+              y: clientY,
+              opacity: 1,
+              duration: 0.1,
+              ease: "power2.out"
+            });
+        }
       });
     };
 

@@ -59,9 +59,9 @@ const Work = () => {
         toggleActions: "play none none reverse",
       },
       opacity: 0,
-      x: -50,
-      duration: 1,
-      ease: "power3.out",
+      x: -30,
+      duration: 0.8,
+      ease: "expo.out",
     });
 
     // Items animation
@@ -75,10 +75,10 @@ const Work = () => {
           toggleActions: "play none none reverse",
         },
         opacity: 0,
-        y: 40,
-        duration: 0.8,
-        delay: index * 0.15,
-        ease: "power3.out",
+        y: 20,
+        duration: 0.6,
+        delay: index * 0.1,
+        ease: "expo.out",
       });
     });
   }, { scope: container });
