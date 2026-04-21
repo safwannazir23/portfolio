@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SN",
+  title: "Portfolio",
   description: "Safwan Nazir | Software Developer",
 };
 
