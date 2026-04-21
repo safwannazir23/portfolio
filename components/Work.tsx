@@ -107,7 +107,7 @@ const Work = () => {
               <div className="flex flex-col gap-4">
                 {/* Role and Status */}
                 <div className="flex items-center gap-3">
-                  <h3 className="text-2xl font-bold text-black">{item.role}</h3>
+                  <h3 className="text-2xl font-bold text-white">{item.role}</h3>
                   {item.status && (
                     <span className="px-3 py-0.5 rounded-full bg-orange-100 text-orange-700 text-xs font-bold uppercase tracking-wider border border-orange-200">
                       {item.status}
@@ -116,7 +116,7 @@ const Work = () => {
                 </div>
 
                 {/* Metadata */}
-                <div className="flex flex-wrap items-center gap-6 text-zinc-500 text-sm font-medium">
+                <div className="flex flex-wrap items-center gap-6 text-white text-sm font-medium">
                   <div className="flex items-center gap-2">
                     <Calendar className="w-4 h-4" />
                     <span>{item.duration}</span>

@@ -35,7 +35,7 @@ const LapCounter = () => {
   // Animate on lap change
   useEffect(() => {
     if (lapRef.current) {
-      gsap.fromTo(lapRef.current, 
+      gsap.fromTo(lapRef.current,
         { scale: 1.5, color: "#ef4444" },
         { scale: 1, color: "#000000", duration: 0.5, ease: "back.out(2)" }
       );
@@ -58,7 +58,7 @@ const LapCounter = () => {
           <div className="h-10 w-px bg-zinc-200 self-center mx-2"></div>
           <div className="flex flex-col">
             <span className="text-[10px] font-black text-zinc-400 uppercase leading-none">Total</span>
-            <span className="text-3xl font-black text-zinc-300 italic leading-none">
+            <span className="text-3xl font-black text-red-500 italic leading-none">
               {totalLaps}
             </span>
           </div>

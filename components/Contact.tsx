@@ -39,7 +39,7 @@ const Contact = () => {
   const onLinkEnter = (index: number) => {
     gsap.to(linkRefs.current[index], {
       x: 10,
-      color: "#000",
+      color: "#ff2d2dff",
       duration: 0.3,
       ease: "power2.out"
     });
@@ -48,7 +48,7 @@ const Contact = () => {
   const onLinkLeave = (index: number) => {
     gsap.to(linkRefs.current[index], {
       x: 0,
-      color: "#52525b",
+      color: "#ffffffff",
       duration: 0.3,
       ease: "power2.inOut"
     });
@@ -68,7 +68,7 @@ const Contact = () => {
               ref={el => { linkRefs.current[index] = el; }}
               onMouseEnter={() => onLinkEnter(index)}
               onMouseLeave={() => onLinkLeave(index)}
-              className="group flex items-center gap-3 text-2xl md:text-3xl font-bold text-zinc-600 transition-colors duration-500 w-fit"
+              className="group flex items-center gap-3 text-2xl md:text-3xl font-bold text-white transition-colors duration-500 w-fit"
             >
               <span>{link.name}</span>
               <ArrowUpRight className="w-6 h-6 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />

@@ -91,9 +91,9 @@ const Hero = () => {
         <div className="flex-1">
           <h1
             ref={nameRef}
-            className="mt-2 text-[3.2rem] sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-tighter leading-none overflow-hidden whitespace-nowrap"
+            className="text-white/80 mt-2 text-[3.2rem] sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-tighter leading-none overflow-hidden whitespace-nowrap"
           >
-            {"SAFWAN NAZIR".split("").map((char, index) => (
+            {"SN911".split("").map((char, index) => (
               <span key={index} className="char inline-block min-w-[0.1em]">
                 {char === " " ? "\u00A0" : char}
               </span>
@@ -137,8 +137,8 @@ const Hero = () => {
       {/* Bio at the bottom */}
       <div className="mt-20 z-10 w-full max-w-7xl mx-auto pt-12">
         <div ref={bioRef} className="max-w-xl self-end ml-auto">
-          <p className="text-xl leading-relaxed hover:bg-red-500 hover:text-white hover:p-2 transition-all duration-300">
-            When I'm not coding, you'll find me on the <span className="text-black font-semibold">badminton court</span>, or exploring the beautiful landscapes of Kashmir.
+          <p className="group text-white/80 text-xl leading-relaxed hover:bg-red-500 hover:text-white hover:p-2 transition-all duration-300 cursor-default">
+            When I'm not coding, you'll find me on the <span className="text-red-500 group-hover:text-black font-semibold transition-colors duration-300">badminton court</span>, or exploring the beautiful landscapes of Kashmir.
           </p>
         </div>
       </div>

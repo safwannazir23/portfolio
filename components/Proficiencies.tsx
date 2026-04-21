@@ -98,7 +98,7 @@ const Proficiencies = () => {
               className="group"
             >
               <div className="grid grid-cols-1 sm:grid-cols-[150px_1fr] gap-6 pb-12 border-b border-black/5 group-last:border-none">
-                <h3 className="text-xl font-bold text-black uppercase tracking-widest sm:text-right">
+                <h3 className="text-xl font-bold text-white uppercase tracking-widest sm:text-right">
                   {group.category}
                 </h3>
                 <ul className="flex flex-wrap sm:flex-col gap-x-6 gap-y-2 text-zinc-600 font-medium text-lg">

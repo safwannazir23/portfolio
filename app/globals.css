@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f8f8f8;
+  --background: #1f1f1f;
   --foreground: #000000;
-  --grid-color: rgba(204, 204, 204, 0.192);
+  --grid-color: rgba(68, 68, 68, 0.452);
 }
 
 @theme inline {

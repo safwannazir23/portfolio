@@ -144,9 +144,9 @@ const Footer = () => {
 
         <div className="mx-auto">
           <p
-            onMouseEnter={(e) => gsap.to(e.currentTarget, { letterSpacing: "0.3em", color: "#000", duration: 0.5 })}
-            onMouseLeave={(e) => gsap.to(e.currentTarget, { letterSpacing: "0.2em", color: "#52525b", duration: 0.5 })}
-            className="text-sm font-bold text-zinc-600 uppercase tracking-[0.2em] cursor-default transition-all"
+            onMouseEnter={(e) => gsap.to(e.currentTarget, { letterSpacing: "0.3em", color: "#ff3131ff", duration: 0.3 })}
+            onMouseLeave={(e) => gsap.to(e.currentTarget, { letterSpacing: "0.2em", color: "#ffffffff", duration: 0.3 })}
+            className="text-sm font-bold text-white/80 uppercase tracking-[0.2em] cursor-default transition-all"
           >
             &copy; {new Date().getFullYear()} SAFWAN NAZIR
           </p>
