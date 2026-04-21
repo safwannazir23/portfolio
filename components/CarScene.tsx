@@ -95,7 +95,7 @@ const CarModel = ({ params }: { params: any }) => {
             }
         }
 
-        if (!isDragging.current) return;
+        if (!isDragging.current || !modelRef.current) return;
 
         const delta = (e.clientX - startX.current) * 0.015;
         startX.current = e.clientX;
