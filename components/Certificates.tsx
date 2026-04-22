@@ -5,26 +5,20 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
+interface CertificateItem {
+  title: string;
+  date: string;
+  issuer: string;
+  link?: string;
 }
 
-const certificatesData = [
-  { name: "Software Architecture Foundations", year: "2025", provider: "LinkedIn Learning" },
-  { name: "Infosys Foundation’s Certificate Course on Artificial Intelligence", year: "2025", provider: "Infosys" },
-  { name: "Harvard University’s  CS50", year: "2024", provider: "edX" },
-  { name: "Web Development Bootcamp", year: "2024", provider: "Udemy" },
-  { name: "Al Fluency Framework & Foundations", year: "2026", provider: "Anthropic" },
-  { name: "Claude 101", year: "2026", provider: "Anthropic" },
-  { name: "Claude Code in Action", year: "2026", provider: "Anthropic" },
-];
-
-const Certificates = () => {
+const Certificates = ({ certificates }: { certificates: CertificateItem[] }) => {
   const container = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useGSAP(() => {
+    if (!certificates) return;
     gsap.from(titleRef.current, {
       scrollTrigger: { trigger: titleRef.current, start: "top 85%" },
       opacity: 0, x: -30, duration: 0.8, ease: "expo.out"
@@ -46,10 +40,10 @@ const Certificates = () => {
           <h2 ref={titleRef} className="text-5xl md:text-7xl font-bold tracking-tighter text-red-500">Certificates</h2>
         </div>
         <div className="flex flex-col gap-10">
-          {certificatesData.map((cert, index) => (
+          {certificates?.map((cert, index) => (
             <div key={index} ref={el => { itemRefs.current[index] = el; }} className="p-2 border-b border-black/5 last:border-none bg-red-500">
-              <h3 className="text-xl font-bold text-white mb-2">{cert.name}</h3>
-              <p className="text-white font-medium">{cert.year} at {cert.provider}</p>
+              <h3 className="text-xl font-bold text-white mb-2">{cert.title}</h3>
+              <p className="text-white font-medium">{cert.date} at {cert.issuer}</p>
             </div>
           ))}
         </div>

@@ -12,8 +12,25 @@ import LapFinishedIndicator from "@/components/LapFinishedIndicator";
 import LapCounter from "@/components/LapCounter";
 import SectionNavigator from "@/components/SectionNavigator";
 import StartLights from "@/components/StartLights";
+import { client } from "@/lib/sanity.client";
+import { 
+  projectsQuery, 
+  educationQuery, 
+  workQuery, 
+  certificatesQuery, 
+  proficienciesQuery 
+} from "@/lib/sanity.queries";
 
-export default function Home() {
+export default async function Home() {
+  // Fetch data in parallel
+  const [projects, education, work, certificates, proficiencies] = await Promise.all([
+    client.fetch(projectsQuery),
+    client.fetch(educationQuery),
+    client.fetch(workQuery),
+    client.fetch(certificatesQuery),
+    client.fetch(proficienciesQuery),
+  ]);
+
   return (
     <main className="min-h-screen bg-transparent selection:bg-black selection:text-white relative">
       <CarScene />
@@ -29,27 +46,27 @@ export default function Home() {
         <LapFinishedIndicator lap={1} />
 
         <div id="proficiencies">
-          <Proficiencies />
+          <Proficiencies proficiencies={proficiencies} />
         </div>
         <LapFinishedIndicator lap={2} />
 
         <div id="work">
-          <Work />
+          <Work work={work} />
         </div>
         <LapFinishedIndicator lap={3} />
 
         <div id="education">
-          <Education />
+          <Education education={education} />
         </div>
         <LapFinishedIndicator lap={4} />
 
         <div id="certificates">
-          <Certificates />
+          <Certificates certificates={certificates} />
         </div>
         <LapFinishedIndicator lap={5} />
 
         <div id="projects">
-          <Projects />
+          <Projects projects={projects} />
         </div>
         <LapFinishedIndicator lap={6} />
 

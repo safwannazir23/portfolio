@@ -6,35 +6,29 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // Register ScrollTrigger
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
+interface ProficiencyItem {
+  name: string;
+  category: string;
 }
 
-const proficienciesData = [
-  {
-    category: "Skills",
-    items: ["System Design", "Frontend Architecture", "Backend Logic", "Deployment"],
-  },
-  {
-    category: "Tools",
-    items: ["VS Code", "Antigravity", "Postman", "Notion", "Razorpay API"],
-  },
-  {
-    category: "Tech Stack",
-    items: ["React", "Next.js", "Framer Motion", "Express", "JavaScript (ES6+)", "Python", "SQL"],
-  },
-  {
-    category: "Spoken Languages",
-    items: ["English", "Kashmiri", "Urdu"],
-  },
-];
-
-const Proficiencies = () => {
+const Proficiencies = ({ proficiencies }: { proficiencies: ProficiencyItem[] }) => {
   const container = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
 
+  // Group proficiencies by category
+  const groupedProficiencies = proficiencies?.reduce((acc, item) => {
+    if (!acc[item.category]) {
+      acc[item.category] = [];
+    }
+    acc[item.category].push(item.name);
+    return acc;
+  }, {} as Record<string, string[]>);
+
+  const categories = groupedProficiencies ? Object.keys(groupedProficiencies) : [];
+
   useGSAP(() => {
+    if (!proficiencies) return;
     // Title animation
     gsap.from(titleRef.current, {
       scrollTrigger: {
@@ -91,18 +85,18 @@ const Proficiencies = () => {
 
         {/* Right: Content */}
         <div className="flex flex-col gap-12">
-          {proficienciesData.map((group, index) => (
+          {categories.map((category, index) => (
             <div
-              key={group.category}
+              key={category}
               ref={(el) => { sectionRefs.current[index] = el; }}
               className="group"
             >
               <div className="grid grid-cols-1 sm:grid-cols-[150px_1fr] gap-6 pb-12 border-b border-black/5 group-last:border-none">
                 <h3 className="text-xl font-bold text-white uppercase tracking-widest sm:text-right">
-                  {group.category}
+                  {category}
                 </h3>
                 <ul className="flex flex-wrap sm:flex-col gap-x-6 gap-y-2 text-zinc-600 font-medium text-lg">
-                  {group.items.map((item) => (
+                  {groupedProficiencies[category].map((item: string) => (
                     <li key={item} className="prof-item text-white bg-red-500 transition-colors duration-300 px-2 py-1">
                       {item}
                     </li>

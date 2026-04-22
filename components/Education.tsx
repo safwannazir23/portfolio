@@ -6,34 +6,22 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Calendar, GraduationCap, MapPin } from "lucide-react";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
+interface EducationItem {
+  degree: string;
+  tag?: string;
+  duration: string;
+  institution: string;
+  location: string;
+  description: string;
 }
 
-const educationData = [
-  {
-    degree: "Bachelor of Technology in Computer Science and Engineering",
-    tag: "Highest",
-    duration: "2021 - 2025",
-    institution: "IUST",
-    location: "Awantipora, J&K",
-    description: "DSA, OOPS, OS, DBMS, Software Engineering, Computer Networks, Cryptography, C/C++/Java Programming, Computer Architecture and Organisation, Microprocessors, AI, ML, NLP, FLAT, Compiler Design, Linux Internals, Discrete Mathematics, HPC, IoT, Digital Image Processing, and Organisational Behaviour. ",
-  },
-  {
-    degree: "Higher Secondary School",
-    duration: "2007 - 2019",
-    institution: "Burn Hall",
-    location: "Srinagar",
-    description: "Completed my Higher Secondary School with a focus on Science stream, gaining a strong foundation in Physics, Chemistry, and Mathematics.",
-  },
-];
-
-const Education = () => {
+const Education = ({ education }: { education: EducationItem[] }) => {
   const container = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useGSAP(() => {
+    if (!education) return;
     gsap.from(titleRef.current, {
       scrollTrigger: { trigger: titleRef.current, start: "top 85%" },
       opacity: 0, x: -30, duration: 0.8, ease: "expo.out"
@@ -55,7 +43,7 @@ const Education = () => {
           <h2 ref={titleRef} className="text-5xl md:text-7xl font-bold tracking-tighter text-red-500">Education</h2>
         </div>
         <div className="flex flex-col gap-12">
-          {educationData.map((item, index) => (
+          {education?.map((item, index) => (
             <div key={index} ref={el => { itemRefs.current[index] = el; }} className="pb-12 border-b border-black/5 last:border-none">
               <div className="flex flex-col gap-4 text-left">
                 <div className="flex items-center gap-3">
