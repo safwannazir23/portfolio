@@ -18,6 +18,7 @@ export const metadata: Metadata = {
 };
 
 import MouseFollower from "@/components/MouseFollower";
+import Chatbot from "@/components/Chatbot";
 
 export default function RootLayout({
   children,
@@ -32,6 +33,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <MouseFollower />
         {children}
+        <Chatbot />
       </body>
     </html>
   );
